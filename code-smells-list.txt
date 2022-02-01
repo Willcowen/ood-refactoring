@@ -1,0 +1,8 @@
+### Uncommunicative Names
+### Inconsistent Names
+### Duplicated Code
+### Long Method
+### Large Class
+### Complex Conditional
+### Comments
+### Magic Numbers

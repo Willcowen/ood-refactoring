@@ -1,13 +1,26 @@
-class Cinema {
+/* 
+### Uncommunicative Names
+### Inconsistent Names
+### Duplicated Code
+### Long Method
+### Large Class
+### Complex Conditional
+### Comments
+### Magic Numbers 
+*/
+
+const maxCapacity = 100
+
+class Cinema { //### Large Class
 
   constructor() {
     this.films = []
     this.screens = []
   }
 
-  //Add a new screen
-  save(screenName, capacity) {
-    if (capacity > 100) {
+  
+  addNewScreen(screenName, capacity) {
+    if (capacity > maxCapacity) { 
       return 'Exceeded max capacity'
     }
 
@@ -30,10 +43,9 @@ class Cinema {
     })
   }
 
-  //Add a new film
-  addNew(movieName, r, duration) {
+  addNewMovie(movieName, rating, duration) {
 
-    //Check the film doesn't already exist
+    //Check the film doesn't already exist ### Duplicated Code
     let movie = null
     for (let i=0;i<this.films.length;i++) {
       if (this.films[i].name==movieName) {
@@ -46,8 +58,8 @@ class Cinema {
     }
 
     //Check the rating is valid
-    if (r!="U" && r!="PG") {
-      if (r!="12" && r!="15" && r!="18") {
+    if (rating!="U" && rating!="PG") {
+      if (rating!="12" && rating!="15" && rating!="18") { //### Complex Conditional
         return 'Invalid rating'
       }
     }
@@ -64,11 +76,11 @@ class Cinema {
       return 'Invalid duration'
     }
 
-    this.films.push({name:movieName, rating:r, duration: duration})
+    this.films.push({name:movieName, rating:rating, duration: duration})
   }
 
-  //Add a showing for a specific film to a screen at the provided start time
-  add(movie, screenName, startTime) {
+  //Add a showing for a specific film to a screen at the provided start time 
+  addNewShowing(movieName, screenName, startTime) {
 
     let result = /^(\d?\d):(\d\d)$/.exec(startTime)
     if(result==null) {
@@ -83,13 +95,13 @@ class Cinema {
 
 
     let film = null
-    //Find the film by name
+    // Find the film by name ### Duplicated Code
     for (let i=0;i<this.films.length;i++) {
-      if (this.films[i].name==movie) {
+      if (this.films[i].name==movieName) {
         film = this.films[i]
       }
     }
-
+  
     if(film===null) {
       return 'Invalid film'
     }
@@ -133,7 +145,7 @@ class Cinema {
     }
     
     //Go through all existing showings for this film and make
-    //sure the start time does not overlap 
+    //sure the start time does not overlap  ### Long Method - Perhaps refactor a new method using startTimes.
     let error = false
     for(let i=0;i<theatre.showings.length;i++) {
 
@@ -221,6 +233,7 @@ class Cinema {
   
     return showings
   }
+
 }
 
 module.exports = Cinema
