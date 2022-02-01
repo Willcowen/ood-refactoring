@@ -119,7 +119,7 @@ describe("Cinema", () => {
     
     cinema.addNewShowing("Film1", "Screen #1", "10:00")
 
-    const result = cinema.allShowings()
+    const result = cinema.allMovieShowings()
     expect(result).toEqual(expected)
   })
 
@@ -137,7 +137,7 @@ describe("Cinema", () => {
     cinema.addNewShowing("Film1", "Screen #1", "10:00")
     cinema.addNewShowing("Film1", "Screen #1", "12:10")
 
-    const result = cinema.allShowings()
+    const result = cinema.allMovieShowings()
     expect(result).toEqual(expected)
   })
 
@@ -156,7 +156,7 @@ describe("Cinema", () => {
     cinema.addNewShowing("Film1", "Screen #1", "10:00")
     cinema.addNewShowing("Film1", "Screen #2", "10:00")
 
-    const result = cinema.allShowings()
+    const result = cinema.allMovieShowings()
     expect(result).toEqual(expected)
   })
 
@@ -184,7 +184,7 @@ describe("Cinema", () => {
     cinema.addNewShowing("Film2", "Screen #2", "09:00")
     
 
-    const result = cinema.allShowings()
+    const result = cinema.allMovieShowings()
     expect(result).toEqual(expected)
   })
 
